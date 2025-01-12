@@ -46,12 +46,9 @@ public class MyDirectory {
     }
 
     public void sortDirectoryByName() {
-        Collections.sort(listOfDirectory, new Comparator<Directory>() {
-            @Override
-            public int compare(Directory d1, Directory d2) {
-                return d1.getNameDirectory().compareToIgnoreCase(d2.getNameDirectory());
-            }
-        });
+        Collections.sort(listOfDirectory,
+                (d1, d2) -> d1.getNameDirectory().compareToIgnoreCase(d2.getNameDirectory())
+        );
         System.out.println("Directories sorted successfully!");
     }
 
@@ -90,9 +87,9 @@ public class MyDirectory {
         System.out.println("\nDirectory Structure:");
         System.out.println("Root: " + nameMyDirectory);
         for (Directory dir : listOfDirectory) {
-            System.out.println("└── " + dir.getNameDirectory());
+            System.out.println("+-- " + dir.getNameDirectory());
             for (Document doc : dir.getListOfDocument()) {
-                System.out.println("    └── " + doc.getNameDocument());
+                System.out.println("|   +-- " + doc.getNameDocument());
             }
         }
     }
